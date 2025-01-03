@@ -1,0 +1,13 @@
+function hasProperty(obj, property) {
+    return obj.hasOwnProperty(property);
+}
+
+// Example Usage
+const person = {
+    name: "John",
+    age: 25,
+    city: "New York",
+};
+
+console.log(hasProperty(person, "name")); // true
+console.log(hasProperty(person, "gender")); // false

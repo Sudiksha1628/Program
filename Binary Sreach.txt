@@ -1,0 +1,39 @@
+// Binary Search Function
+function binarySearch(arr, target) {
+    let start = 0; // Start index
+    let end = arr.length - 1; // End index
+
+    while (start <= end) {
+        // Find the middle index
+        let mid = Math.floor((start + end) / 2);
+
+        // Check if the middle element is the target
+        if (arr[mid] === target) {
+            return mid; // Target found, return the index
+        }
+        // If the target is greater, ignore the left half
+        else if (arr[mid] < target) {
+            start = mid + 1;
+        }
+        // If the target is smaller, ignore the right half
+        else {
+            end = mid - 1;
+        }
+    }
+
+    // If target is not found, return -1
+    return -1;
+}
+
+// Example Usage
+let numbers = [2, 4, 6, 8, 10, 12, 14, 16]; // Sorted array
+let target = 10; // Target to search for
+
+// Perform binary search and display the result
+let result = binarySearch(numbers, target);
+
+if (result !== -1) {
+    console.log(`Target ${target} found at index ${result}`);
+} else {
+    console.log(`Target ${target} not found in the array`);
+}
