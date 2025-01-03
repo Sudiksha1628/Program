@@ -45,3 +45,50 @@ mongoosh
 use school;
 copy above
 db.students.find().pretty();
+
+
+
+/ Insert a single document
+db.students.insertOne({ name: "John Doe", age: 25, major: "Computer Science" });
+
+// Insert multiple documents
+db.students.insertMany([
+    { name: "Jane Doe", age: 22, major: "Biology" },
+    { name: "Alice Smith", age: 23, major: "Physics" }
+]);
+
+
+
+// Retrieve all documents
+db.students.find();
+
+// Retrieve documents with a filter
+db.students.find({ major: "Computer Science" });
+
+// Retrieve documents with projections (select specific fields)
+db.students.find({ age: { $gt: 22 } }, { name: 1, major: 1, _id: 0 });
+
+
+// Update a single document
+db.students.updateOne(
+    { name: "John Doe" }, // Filter
+    { $set: { age: 26 } } // Update
+);
+
+// Update multiple documents
+db.students.updateMany(
+    { major: "Physics" },
+    { $set: { scholarship: true } }
+);
+
+// Replace a document entirely
+db.students.replaceOne(
+    { name: "Jane Doe" },
+    { name: "Jane Doe", age: 23, major: "Chemistry" }
+);
+
+// Delete a single document
+db.students.deleteOne({ name: "Alice Smith" });
+
+// Delete multiple documents
+db.students.deleteMany({ major: "Biology" });
